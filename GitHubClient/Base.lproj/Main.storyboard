@@ -99,7 +99,9 @@
         <scene sceneID="US2-gP-rg7">
             <objects>
                 <tabBarController id="f1B-xj-94E" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="b2a-Ai-O8Y"/>
+                    <navigationItem key="navigationItem" id="b2a-Ai-O8Y">
+                        <barButtonItem key="backBarButtonItem" title=" " id="ajy-dp-aju"/>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="eOf-mH-75N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

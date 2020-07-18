@@ -26,6 +26,10 @@ class RepoListViewController: UITableViewController {
         loadIndicator.snp.makeConstraints({ $0.center.equalToSuperview() })
         loadIndicator.startAnimating()
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        
         model.update()
     }
 
@@ -48,11 +52,20 @@ class RepoListViewController: UITableViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    @objc private func refresh() {
+        model.update()
+    }
 }
 
 extension RepoListViewController: ViewModelDelegate {
     func viewModelDidLoad() {
-        loadIndicator.stopAnimating()
+        if loadIndicator.isAnimating {
+            loadIndicator.stopAnimating()
+        }
+        if tableView.refreshControl?.isRefreshing == true {
+            tableView.refreshControl?.endRefreshing()
+        }
         tableView.reloadData()
     }
     
