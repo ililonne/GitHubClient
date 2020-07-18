@@ -8,12 +8,14 @@
 
 class Parser {
     class func parseRepository(from json: [String: Any]) -> Repository? {
-        if let name = json["name"] as? String,
+        if let id = json["id"] as? Int,
+           let name = json["name"] as? String,
            let fullName = json["full_name"] as? String,
            let ownerDict = json["owner"] as? [String: Any],
            let owner = parseOwner(from: ownerDict) {
             
-            return Repository(name: name,
+            return Repository(id: id,
+                              name: name,
                               fullName: fullName,
                               owner: owner,
                               description: json["description"] as? String,

@@ -21,19 +21,12 @@ class RepositoryTableViewCell: UITableViewCell {
     @IBOutlet weak var ownerNameLabel: UILabel!
     
     private var model: RepositoryTableViewCellModel?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        showSkeletonAnimation()
-    }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         startCountLabel.text = ""
         forkCountLabel.text = ""
         languageLabel.text = ""
-        showSkeleton()
-        showSkeletonAnimation()
     }
     
     func update(with model: RepositoryTableViewCellModel) {
@@ -49,7 +42,6 @@ class RepositoryTableViewCell: UITableViewCell {
         }
         model.loadFull(completion: { [weak self] (isError) in
             DispatchQueue.main.async {
-                self?.hideSkeleton()
                 
                 if isError {
                     self?.startCountLabel.text = "Ошибка"
@@ -62,23 +54,5 @@ class RepositoryTableViewCell: UITableViewCell {
                 }
             }
         })
-    }
-    
-    private func showSkeleton() {
-        startCountLabel.showSkeleton()
-        forkCountLabel.showSkeleton()
-        languageLabel.showSkeleton()
-    }
-    
-    private func showSkeletonAnimation() {
-        startCountLabel.showAnimatedSkeleton()
-        forkCountLabel.showAnimatedSkeleton()
-        languageLabel.showAnimatedSkeleton()
-    }
-    
-    private func hideSkeleton() {
-        startCountLabel.hideSkeleton()
-        forkCountLabel.hideSkeleton()
-        languageLabel.hideSkeleton()
     }
 }

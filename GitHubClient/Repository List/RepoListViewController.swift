@@ -15,6 +15,13 @@ class RepoListViewController: UITableViewController {
     
     private lazy var loadIndicator = UIActivityIndicatorView(style: .gray)
     
+    private lazy var bottomLoader: UIActivityIndicatorView = {
+        let loader = UIActivityIndicatorView(style: .gray)
+        loader.hidesWhenStopped = true
+
+        return loader
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +36,8 @@ class RepoListViewController: UITableViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.refreshControl = refreshControl
+        
+        tableView.tableFooterView = bottomLoader
         
         model.update()
     }
@@ -53,20 +62,33 @@ class RepoListViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
+        if isLastCell && model.isNeedLoadMore {
+            bottomLoader.startAnimating()
+            model.update()
+        }
+    }
+    
     @objc private func refresh() {
-        model.update()
+        model.refresh()
     }
 }
 
 extension RepoListViewController: ViewModelDelegate {
     func viewModelDidLoad() {
-        if loadIndicator.isAnimating {
-            loadIndicator.stopAnimating()
+        DispatchQueue.main.async {
+            if self.loadIndicator.isAnimating {
+                self.loadIndicator.stopAnimating()
+            }
+            if self.tableView.refreshControl?.isRefreshing == true {
+                self.tableView.refreshControl?.endRefreshing()
+            }
+            self.tableView.reloadData()
+            if !self.model.isNeedLoadMore {
+                self.bottomLoader.stopAnimating()
+            }
         }
-        if tableView.refreshControl?.isRefreshing == true {
-            tableView.refreshControl?.endRefreshing()
-        }
-        tableView.reloadData()
     }
     
     func viewModelDidFailLoad() {
