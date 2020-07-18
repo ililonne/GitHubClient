@@ -13,8 +13,15 @@ protocol ViewModelDelegate: class {
     func viewModelDidFailLoad()
 }
 
+enum RepoListViewModelType {
+    case `public`
+    case github
+}
+
 class RepoListViewModel {
     weak var delegate: ViewModelDelegate?
+    
+    private let type: RepoListViewModelType
     
     private var repositories = [RepositoryTableViewCellModel]()
     private(set) var isNeedLoadMore = true
@@ -26,18 +33,45 @@ class RepoListViewModel {
         return repositories.count 
     }
     
+    init(type: RepoListViewModelType) {
+        self.type = type
+    }
+    
+    private var parameters: [String: Any]? {
+        switch type {
+        case .public:
+            if isNeedLoadMore && page > 0 {
+                return ["since": lastRepoID]
+            }
+            return nil
+            
+        case .github:
+            if isNeedLoadMore && page > 0 {
+                return ["page": page + 1]
+            }
+            return nil
+        }
+    }
+    
+    private var request: String {
+        switch type {
+        case .public:
+            return "repositories"
+            
+        case .github:
+            return "orgs/github/repos"
+        }
+    }
+    
     func update() {
         if isUpdating {
             return
         }
-        var parameters: [String: Any]?
-        if isNeedLoadMore && page > 0 {
-            parameters = ["since": lastRepoID]
-        }
+        
         isUpdating = true
         
         DispatchQueue.global(qos: .utility).async {
-            NetworkService.request("repositories", parameters: parameters) { [weak self] (json, isError) in
+            NetworkService.request(self.request, parameters: self.parameters) { [weak self] (json, isError) in
                 guard let this = self else {
                     return
                 }

@@ -40,19 +40,27 @@ class RepositoryTableViewCell: UITableViewCell {
             
             ownerAvatarImageView.kf.setImage(with: avatarUrl, placeholder: UIImage(named: "avatar"))
         }
-        model.loadFull(completion: { [weak self] (isError) in
-            DispatchQueue.main.async {
-                
-                if isError {
-                    self?.startCountLabel.text = "Ошибка"
-                    self?.forkCountLabel.text = "Ошибка"
-                    self?.languageLabel.text = "Ошибка"
-                } else {
-                    self?.startCountLabel.text = self?.model?.starsCount
-                    self?.forkCountLabel.text = self?.model?.forksCount
-                    self?.languageLabel.text = self?.model?.languages
+        if let starsText = model.starsCount,
+           let forksText = model.forksCount,
+           let languageText = model.languages {
+               startCountLabel.text = starsText
+               forkCountLabel.text = forksText
+               languageLabel.text = languageText
+        } else {
+            model.loadFull(completion: { [weak self] (isError) in
+                DispatchQueue.main.async {
+                    
+                    if isError {
+                        self?.startCountLabel.text = "Ошибка"
+                        self?.forkCountLabel.text = "Ошибка"
+                        self?.languageLabel.text = "Ошибка"
+                    } else {
+                        self?.startCountLabel.text = self?.model?.starsCount ?? "0"
+                        self?.forkCountLabel.text = self?.model?.forksCount ?? "0"
+                        self?.languageLabel.text = self?.model?.languages
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 }

@@ -98,9 +98,9 @@
         <!--Tab Bar Controller-->
         <scene sceneID="US2-gP-rg7">
             <objects>
-                <tabBarController id="f1B-xj-94E" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="f1B-xj-94E" customClass="TabBarController" customModule="GitHubClient" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="b2a-Ai-O8Y">
-                        <barButtonItem key="backBarButtonItem" title=" " id="ajy-dp-aju"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="7Pf-52-gBf"/>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="eOf-mH-75N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -109,188 +109,13 @@
                         <color key="tintColor" red="0.1094222358" green="0.1094222358" blue="0.1094222358" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" red="0.1094222358" green="0.1094222358" blue="0.1094222358" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="kTK-2W-PeB" kind="relationship" relationship="viewControllers" id="wME-ng-idX"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pmb-f2-41Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="284" y="390"/>
         </scene>
-        <!--Репозитории-->
-        <scene sceneID="hWV-GI-D3v">
-            <objects>
-                <tableViewController storyboardIdentifier="RepoListViewController" id="kTK-2W-PeB" customClass="RepoListViewController" customModule="GitHubClient" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SDQ-S4-4gW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="XwL-kN-aGZ">
-                            <rect key="frame" x="0.0" y="243.5" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        </view>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RepositoryTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepositoryTableViewCell" id="9hn-A4-mhx" customClass="RepositoryTableViewCell" customModule="GitHubClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="187.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9hn-A4-mhx" id="v40-6R-sP8">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="187.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Syg-42-siI">
-                                            <rect key="frame" x="20" y="11" width="374" height="165.5"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="F1F-tS-DRV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="54"/>
-                                                    <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3bf-yh-lgW">
-                                                            <rect key="frame" x="0.0" y="0.0" width="121.5" height="54"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="                       " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="af4-Ow-lvM">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="121.5" height="22"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="22" id="Heb-Jh-csN"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="19"/>
-                                                                    <color key="textColor" red="0.011266804300000001" green="0.3992490172" blue="0.83998137709999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="                           " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSr-X7-PO3">
-                                                                    <rect key="frame" x="0.0" y="32" width="121.5" height="22"/>
-                                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
-                                                                    <color key="textColor" red="0.33621653909999999" green="0.36815798280000001" blue="0.40149238710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                </label>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="af4-Ow-lvM" firstAttribute="leading" secondItem="3bf-yh-lgW" secondAttribute="leading" id="fOz-Gf-0gg"/>
-                                                                <constraint firstItem="TSr-X7-PO3" firstAttribute="leading" secondItem="3bf-yh-lgW" secondAttribute="leading" id="mqV-ey-alL"/>
-                                                            </constraints>
-                                                        </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oQ2-DG-ySM">
-                                                            <rect key="frame" x="337" y="0.0" width="37" height="54"/>
-                                                            <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Ri-1c-UO8">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="37" height="22"/>
-                                                                    <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="ez7-le-GpJ">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
-                                                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="width" constant="22" id="Nq1-BG-ek1"/>
-                                                                                <constraint firstAttribute="height" constant="22" id="WSb-E3-ant"/>
-                                                                            </constraints>
-                                                                        </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGE-EB-e3M">
-                                                                            <rect key="frame" x="32" y="0.0" width="5" height="22"/>
-                                                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                            <userDefinedRuntimeAttributes>
-                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                                                            </userDefinedRuntimeAttributes>
-                                                                        </label>
-                                                                    </subviews>
-                                                                </stackView>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="229-r1-cCL">
-                                                                    <rect key="frame" x="0.0" y="32" width="37" height="22"/>
-                                                                    <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fork" translatesAutoresizingMaskIntoConstraints="NO" id="Lau-x6-6hB">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
-                                                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="width" constant="22" id="HOT-fJ-6df"/>
-                                                                                <constraint firstAttribute="height" constant="22" id="r85-oh-Q2b"/>
-                                                                            </constraints>
-                                                                        </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3d-m4-POL">
-                                                                            <rect key="frame" x="32" y="0.0" width="5" height="22"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                            <userDefinedRuntimeAttributes>
-                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                                                            </userDefinedRuntimeAttributes>
-                                                                        </label>
-                                                                    </subviews>
-                                                                </stackView>
-                                                            </subviews>
-                                                        </stackView>
-                                                    </subviews>
-                                                </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAA-Uf-mLX">
-                                                    <rect key="frame" x="0.0" y="64" width="374" height="61.5"/>
-                                                    <string key="text">An VSCode extension that keeps giving you compliment while you are coding, it will checks the keywords of code to play suitable sounds.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wxo-Jt-1ze">
-                                                    <rect key="frame" x="0.0" y="135.5" width="374" height="30"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="hzP-lX-wCa">
-                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="30" id="BeV-GT-PA3"/>
-                                                                <constraint firstAttribute="height" constant="30" id="ula-ct-3La"/>
-                                                            </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="15"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="adamian98" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bui-Fq-2N6">
-                                                            <rect key="frame" x="40" y="0.0" width="334" height="30"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.011266804300000001" green="0.3992490172" blue="0.83998137709999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Syg-42-siI" secondAttribute="bottom" id="GZv-D8-0Os"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Syg-42-siI" secondAttribute="trailing" id="HxO-co-XfV"/>
-                                        <constraint firstItem="Syg-42-siI" firstAttribute="leading" secondItem="v40-6R-sP8" secondAttribute="leadingMargin" id="SeF-7X-TXh"/>
-                                        <constraint firstItem="Syg-42-siI" firstAttribute="top" secondItem="v40-6R-sP8" secondAttribute="topMargin" id="klo-mU-FV4"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="descriptionLabel" destination="qAA-Uf-mLX" id="PXo-WB-nsg"/>
-                                    <outlet property="forkCountLabel" destination="j3d-m4-POL" id="yX3-3u-sGO"/>
-                                    <outlet property="languageLabel" destination="TSr-X7-PO3" id="T9u-f5-shn"/>
-                                    <outlet property="ownerAvatarImageView" destination="hzP-lX-wCa" id="fdn-bx-sF0"/>
-                                    <outlet property="ownerNameLabel" destination="bui-Fq-2N6" id="njP-af-7j2"/>
-                                    <outlet property="repoTitleLabel" destination="af4-Ow-lvM" id="mH9-MD-XNl"/>
-                                    <outlet property="startCountLabel" destination="lGE-EB-e3M" id="bzs-7Q-a3q"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="kTK-2W-PeB" id="W4Y-4S-fAV"/>
-                            <outlet property="delegate" destination="kTK-2W-PeB" id="LTU-P2-f3A"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Репозитории" image="list" id="Rzc-St-Oy5"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ca-an-T8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="966.66666666666674" y="206.91964285714286"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="avatar" width="40" height="40"/>
-        <image name="fork" width="25" height="35"/>
-        <image name="list" width="25" height="25"/>
         <image name="logo" width="180" height="180"/>
-        <image name="star" width="24" height="24"/>
     </resources>
 </document>

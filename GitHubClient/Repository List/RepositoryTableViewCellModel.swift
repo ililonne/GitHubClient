@@ -17,11 +17,11 @@ class RepositoryTableViewCellModel {
     var avatarUrlString: String? {
         return repository.owner.avatarUrl
     }
-    var starsCount: String {
-        return String(repository.stars ?? 0)
+    var starsCount: String? {
+        return (repository.stars != nil) ? String(repository.stars!) : nil
     }
-    var forksCount: String {
-        return String(repository.forks ?? 0)
+    var forksCount: String? {
+        return (repository.forks != nil) ? String(repository.forks!) : nil
     }
     var languages: String? {
         return repository.language

@@ -11,8 +11,7 @@ import SnapKit
 
 class RepoListViewController: UITableViewController {
 
-    private let model = RepoListViewModel()
-    
+    private let model: RepoListViewModel
     private lazy var loadIndicator = UIActivityIndicatorView(style: .gray)
     
     private lazy var bottomLoader: UIActivityIndicatorView = {
@@ -22,9 +21,21 @@ class RepoListViewController: UITableViewController {
         return loader
     }()
     
+    init(model: RepoListViewModel, title: String) {
+        self.model = model
+        super.init(style: .plain)
+        self.title = title
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(UINib.init(nibName: "RepositoryTableViewCell", bundle: .main), forCellReuseIdentifier: "RepositoryTableViewCell")
+
         tableView.rowHeight = UITableView.automaticDimension
         model.delegate = self
         
@@ -42,6 +53,11 @@ class RepoListViewController: UITableViewController {
         model.update()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.topItem?.title = title
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.numberOfItems
     }

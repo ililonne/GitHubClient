@@ -18,6 +18,8 @@
 		CE719B3024BE34060024D25A /* CommitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE719B2F24BE34060024D25A /* CommitTableViewCell.xib */; };
 		CEBF981924C2E404008DA898 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF981824C2E404008DA898 /* Parser.swift */; };
 		CEBF981F24C30357008DA898 /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF981E24C30357008DA898 /* CustomDateFormatter.swift */; };
+		CEBF982524C32F51008DA898 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF982424C32F51008DA898 /* TabBarController.swift */; };
+		CEBF982724C33102008DA898 /* RepositoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBF982624C33102008DA898 /* RepositoryTableViewCell.xib */; };
 		CEC01F34249F47580060739A /* RepoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01F33249F47580060739A /* RepoListViewController.swift */; };
 		CEC01F36249F479D0060739A /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01F35249F479D0060739A /* RepositoryTableViewCell.swift */; };
 		CEC01F39249F48BF0060739A /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01F38249F48BF0060739A /* Repository.swift */; };
@@ -53,6 +55,8 @@
 		CE719B2F24BE34060024D25A /* CommitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommitTableViewCell.xib; sourceTree = "<group>"; };
 		CEBF981824C2E404008DA898 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		CEBF981E24C30357008DA898 /* CustomDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
+		CEBF982424C32F51008DA898 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		CEBF982624C33102008DA898 /* RepositoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryTableViewCell.xib; sourceTree = "<group>"; };
 		CEC01F33249F47580060739A /* RepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewController.swift; sourceTree = "<group>"; };
 		CEC01F35249F479D0060739A /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		CEC01F38249F48BF0060739A /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 				CEC01F30249F466D0060739A /* Components */,
 				CE4313B3249E4C6A00E9C9A2 /* AppDelegate.swift */,
 				CEC15B1B24BA28EC003C8E7C /* CommonNavigationController.swift */,
+				CEBF982424C32F51008DA898 /* TabBarController.swift */,
 				CE4313B9249E4C6A00E9C9A2 /* Main.storyboard */,
 				CE4313BC249E4C7100E9C9A2 /* Assets.xcassets */,
 				CE4313BE249E4C7100E9C9A2 /* LaunchScreen.storyboard */,
@@ -148,6 +153,7 @@
 				CEC01F35249F479D0060739A /* RepositoryTableViewCell.swift */,
 				CEC15B1224B9F101003C8E7C /* RepositoryTableViewCellModel.swift */,
 				CEC01F38249F48BF0060739A /* Repository.swift */,
+				CEBF982624C33102008DA898 /* RepositoryTableViewCell.xib */,
 				CEC01F3A249F49450060739A /* Owner.swift */,
 			);
 			path = "Repository List";
@@ -257,6 +263,7 @@
 				CE4313C0249E4C7100E9C9A2 /* LaunchScreen.storyboard in Resources */,
 				CEC15B2724BB5E34003C8E7C /* RepositoryHeaderView.xib in Resources */,
 				CE4313BD249E4C7100E9C9A2 /* Assets.xcassets in Resources */,
+				CEBF982724C33102008DA898 /* RepositoryTableViewCell.xib in Resources */,
 				CE4313BB249E4C6A00E9C9A2 /* Main.storyboard in Resources */,
 				CE719B3024BE34060024D25A /* CommitTableViewCell.xib in Resources */,
 			);
@@ -316,6 +323,7 @@
 				CEC15B1C24BA28EC003C8E7C /* CommonNavigationController.swift in Sources */,
 				CEC01F3F249F4C2E0060739A /* NetworkService.swift in Sources */,
 				CEC15B2524BB5E21003C8E7C /* RepositoryHeaderView.swift in Sources */,
+				CEBF982524C32F51008DA898 /* TabBarController.swift in Sources */,
 				CEC15B1E24BA294A003C8E7C /* NSNotification.Name+Ext.swift in Sources */,
 				CEC15B1324B9F101003C8E7C /* RepositoryTableViewCellModel.swift in Sources */,
 				CEC01F43249F4D6B0060739A /* StorageService.swift in Sources */,
