@@ -1,5 +1,7 @@
+import Foundation
+
 class RepositoryTableViewCellModel {
-    private var repository: Repository
+    private(set) var repository: Repository
     
     private var isLoaded = false
     
@@ -22,7 +24,7 @@ class RepositoryTableViewCellModel {
         return String(repository.forks ?? 0)
     }
     var languages: String? {
-        return repository.languages
+        return repository.language
     }
     
     init(repo: Repository) {
@@ -35,19 +37,15 @@ class RepositoryTableViewCellModel {
         }
         
         let requestString = "repos/​\(repository.fullName)".cleared
-        let langRequestString = "repos/​\(repository.fullName)/languages".cleared
-        
-        NetworkService.requestDecodable(requestString, method: .get) { [weak self] (repository: Repository?, isError) in
-            if let repo = repository {
-                self?.repository = repo
+        DispatchQueue.global(qos: .utility).async {
+            NetworkService.request(requestString) { [weak self] (json, isError) in
+                if let repoDict = json as? [String: Any],
+                   let repo = Parser.parseRepository(from: repoDict) {
+                        self?.repository = repo
+                        self?.isLoaded = true
+                    }
+                    completion(isError)
             }
-            NetworkService.request(langRequestString, method: .get, completion: { (languages, isError) in
-                if let languages = languages {
-                    self?.repository.languages = Array(languages.keys).joined(separator: ", ")
-                    self?.isLoaded = true
-                }
-                completion(isError)
-            })
         }
     }
 }

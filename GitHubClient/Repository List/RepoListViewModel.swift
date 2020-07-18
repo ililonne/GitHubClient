@@ -8,40 +8,40 @@
 
 import Foundation
 
-protocol RepoListViewModelDelegate: class {
+protocol ViewModelDelegate: class {
     func viewModelDidLoad()
     func viewModelDidFailLoad()
 }
 
 class RepoListViewModel {
-    weak var delegate: RepoListViewModelDelegate?
+    weak var delegate: ViewModelDelegate?
     
     private var repositories = [RepositoryTableViewCellModel]()
     
     var numberOfItems: Int {
-        return repositories.count
+        return repositories.count 
     }
     
     func update() {
-        NetworkService.requestDecodable("repositories", method: .get) { [weak self] (repositories: [Repository]?, isError) in
-            guard let this = self else {
-                return
-            }
+        NetworkService.request("repositories") { [weak self] (json, isError) in
             if isError {
-                this.delegate?.viewModelDidFailLoad()
+                self?.delegate?.viewModelDidFailLoad()
             } else {
-                if let repos = repositories {
-                    this.repositories = repos.map({
+                if let jsonArray = json as? [[String: Any]] {
+                    let repos = jsonArray.compactMap({ Parser.parseRepository(from: $0) })
+                    self?.repositories = repos.map({
                         RepositoryTableViewCellModel(repo: $0)
                     })
+                    self?.delegate?.viewModelDidLoad()
+                } else {
+                    self?.delegate?.viewModelDidFailLoad()
                 }
-                this.delegate?.viewModelDidLoad()
             }
         }
     }
     
     func getRepoModel(for row: Int) -> RepositoryTableViewCellModel? {
-        if row > 0 && row < repositories.count {
+        if row < repositories.count {
             return repositories[row]
         }
         return nil

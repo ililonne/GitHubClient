@@ -41,9 +41,16 @@ class RepoListViewController: UITableViewController {
         }
         return UITableViewCell()
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let model = model.getRepoModel(for: indexPath.row) {
+            let vc = RepositoryViewController(model: RepositoryViewModel(repo: model.repository))
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
-extension RepoListViewController: RepoListViewModelDelegate {
+extension RepoListViewController: ViewModelDelegate {
     func viewModelDidLoad() {
         loadIndicator.stopAnimating()
         tableView.reloadData()

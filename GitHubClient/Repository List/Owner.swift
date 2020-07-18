@@ -9,9 +9,4 @@
 struct Owner: Decodable {
   let name: String
   let avatarUrl: String?
-  
-  enum CodingKeys: String, CodingKey {
-    case name = "login"
-    case avatarUrl = "avatar_url"
-  }
 }

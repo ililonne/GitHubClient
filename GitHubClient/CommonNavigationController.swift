@@ -13,11 +13,10 @@ class CommonNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let rightBarButton = UIBarButtonItem(image: UIImage(named: "logout"),
-                                             style: .plain,
-                                             target: self,
-                                             action: #selector(logout))
-        navigationBar.topItem?.rightBarButtonItem = rightBarButton
+        let logoutButton = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        logoutButton.setImage(UIImage(named: "logout"), for: .normal)
+        logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(customView: logoutButton)
     }
     
     @objc private func logout() {

@@ -22,28 +22,15 @@ class NetworkService {
           return header
       }
     
-    static func requestDecodable<T: Decodable>(_ request: String,
-                                               method: HTTPMethod,
-                                               parameters: Parameters? = nil,
-                                               completion: @escaping (T?, Bool) -> Void) {
-        
-        let requestString = api + request
-        AF.request(requestString.cleared, method: .get, parameters: parameters, headers: authHeader)
-            .validate()
-            .responseDecodable(completionHandler: { (response: DataResponse<T, AFError>) in
-                completion(response.value, response.error != nil)
-        })
-    }
-    
     static func request(_ request: String,
-                        method: HTTPMethod,
+                        method: HTTPMethod = .get,
                         parameters: Parameters? = nil,
-                        completion: @escaping ([String: Any]?, Bool) -> Void) {
+                        completion: @escaping (Any?, Bool) -> Void) {
         
         let requestString = api + request
-        AF.request(requestString.cleared, method: .get, parameters: parameters, headers: authHeader)
+        AF.request(requestString.cleared, method: method, parameters: parameters, headers: authHeader)
             .responseJSON { (response) in
-                completion(response.value as? [String : Any], response.error != nil)
+                completion(response.value, response.error != nil)
         }
     }
 }
