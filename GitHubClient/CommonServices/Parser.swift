@@ -23,7 +23,7 @@ class Parser {
                               stars: json["stargazers_count"] as? Int,
                               watchers: json["watchers"] as? Int,
                               language: json["language"] as? String,
-                              date: json["created_at"] as? String)
+                              creationDate: json["created_at"] as? String)
         }
         return nil
     }
@@ -34,6 +34,14 @@ class Parser {
                          avatarUrl: json["avatar_url"] as? String)
         }
         return nil
+    }
+    
+    class func parseCommits(from json: [[String: Any]], maxCount: Int) -> [Commit] {
+        let commits = json.compactMap({ Parser.parseCommit(from: $0) })
+        if commits.count > maxCount {
+            return Array(commits[0..<maxCount])
+        }
+        return commits
     }
     
     class func parseCommit(from json: [String: Any]) -> Commit? {

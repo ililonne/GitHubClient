@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0B2A96C6D7185EDF77C3575C /* Pods_GitHubClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1017902CC4CF1BEDD755BE0 /* Pods_GitHubClient.framework */; };
+		CE27245E24D591220025EEC5 /* ViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27245D24D591220025EEC5 /* ViewModelDelegate.swift */; };
+		CE27246024D5914C0025EEC5 /* FavoriteRepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27245F24D5914C0025EEC5 /* FavoriteRepositoriesViewController.swift */; };
+		CE27246324D5B69F0025EEC5 /* StorageObjectsConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27246224D5B69F0025EEC5 /* StorageObjectsConverter.swift */; };
 		CE2E847924BB698B00D2EA8E /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E847824BB698B00D2EA8E /* RepositoryViewModel.swift */; };
 		CE2E847B24BB6BBA00D2EA8E /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E847A24BB6BBA00D2EA8E /* Commit.swift */; };
 		CE4313B4249E4C6A00E9C9A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4313B3249E4C6A00E9C9A2 /* AppDelegate.swift */; };
@@ -16,6 +19,7 @@
 		CE4313BD249E4C7100E9C9A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4313BC249E4C7100E9C9A2 /* Assets.xcassets */; };
 		CE4313C0249E4C7100E9C9A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4313BE249E4C7100E9C9A2 /* LaunchScreen.storyboard */; };
 		CE719B3024BE34060024D25A /* CommitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE719B2F24BE34060024D25A /* CommitTableViewCell.xib */; };
+		CEA93E9424C73B980000E03B /* RepoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEA93E9224C73B970000E03B /* RepoModel.xcdatamodeld */; };
 		CEBF981924C2E404008DA898 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF981824C2E404008DA898 /* Parser.swift */; };
 		CEBF981F24C30357008DA898 /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF981E24C30357008DA898 /* CustomDateFormatter.swift */; };
 		CEBF982524C32F51008DA898 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF982424C32F51008DA898 /* TabBarController.swift */; };
@@ -43,6 +47,9 @@
 		0EC731D8685EC4B9FAF98313 /* Pods-GitHubClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubClient.debug.xcconfig"; path = "Target Support Files/Pods-GitHubClient/Pods-GitHubClient.debug.xcconfig"; sourceTree = "<group>"; };
 		6FA2CB758A47C6EB82CADA2A /* Pods-GitHubClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubClient.release.xcconfig"; path = "Target Support Files/Pods-GitHubClient/Pods-GitHubClient.release.xcconfig"; sourceTree = "<group>"; };
 		A1017902CC4CF1BEDD755BE0 /* Pods_GitHubClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE27245D24D591220025EEC5 /* ViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelDelegate.swift; sourceTree = "<group>"; };
+		CE27245F24D5914C0025EEC5 /* FavoriteRepositoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoriesViewController.swift; sourceTree = "<group>"; };
+		CE27246224D5B69F0025EEC5 /* StorageObjectsConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageObjectsConverter.swift; sourceTree = "<group>"; };
 		CE2E847824BB698B00D2EA8E /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
 		CE2E847A24BB6BBA00D2EA8E /* Commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
 		CE4313B0249E4C6A00E9C9A2 /* GitHubClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +60,7 @@
 		CE4313BF249E4C7100E9C9A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE4313C1249E4C7100E9C9A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE719B2F24BE34060024D25A /* CommitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommitTableViewCell.xib; sourceTree = "<group>"; };
+		CEA93E9324C73B970000E03B /* RepoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RepoModel.xcdatamodel; sourceTree = "<group>"; };
 		CEBF981824C2E404008DA898 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		CEBF981E24C30357008DA898 /* CustomDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
 		CEBF982424C32F51008DA898 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -97,6 +105,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CE27246124D5976C0025EEC5 /* CommonUI */ = {
+			isa = PBXGroup;
+			children = (
+				CE27245D24D591220025EEC5 /* ViewModelDelegate.swift */,
+				CEC15B1B24BA28EC003C8E7C /* CommonNavigationController.swift */,
+				CEBF982424C32F51008DA898 /* TabBarController.swift */,
+			);
+			path = CommonUI;
+			sourceTree = "<group>";
+		};
 		CE4313A7249E4C6A00E9C9A2 = {
 			isa = PBXGroup;
 			children = (
@@ -118,20 +136,37 @@
 		CE4313B2249E4C6A00E9C9A2 /* GitHubClient */ = {
 			isa = PBXGroup;
 			children = (
+				CEA93E7A24C738150000E03B /* CoreData */,
+				CEA93E5024C70D8F0000E03B /* Favorite */,
 				CEC15B1F24BB585F003C8E7C /* Repository */,
 				CEC01F44249F4E810060739A /* CommonServices */,
+				CE27246124D5976C0025EEC5 /* CommonUI */,
 				CEC15B1424BA048F003C8E7C /* Login */,
 				CEC01F37249F48780060739A /* Repository List */,
 				CEC01F30249F466D0060739A /* Components */,
 				CE4313B3249E4C6A00E9C9A2 /* AppDelegate.swift */,
-				CEC15B1B24BA28EC003C8E7C /* CommonNavigationController.swift */,
-				CEBF982424C32F51008DA898 /* TabBarController.swift */,
 				CE4313B9249E4C6A00E9C9A2 /* Main.storyboard */,
 				CE4313BC249E4C7100E9C9A2 /* Assets.xcassets */,
 				CE4313BE249E4C7100E9C9A2 /* LaunchScreen.storyboard */,
 				CE4313C1249E4C7100E9C9A2 /* Info.plist */,
 			);
 			path = GitHubClient;
+			sourceTree = "<group>";
+		};
+		CEA93E5024C70D8F0000E03B /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				CE27245F24D5914C0025EEC5 /* FavoriteRepositoriesViewController.swift */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		CEA93E7A24C738150000E03B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CEA93E9224C73B970000E03B /* RepoModel.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		CEC01F30249F466D0060739A /* Components */ = {
@@ -165,6 +200,7 @@
 				CEC01F3E249F4C2E0060739A /* NetworkService.swift */,
 				CEBF981824C2E404008DA898 /* Parser.swift */,
 				CEC01F42249F4D6B0060739A /* StorageService.swift */,
+				CE27246224D5B69F0025EEC5 /* StorageObjectsConverter.swift */,
 			);
 			path = CommonServices;
 			sourceTree = "<group>";
@@ -321,6 +357,7 @@
 				CE2E847B24BB6BBA00D2EA8E /* Commit.swift in Sources */,
 				CEC15B2324BB5A09003C8E7C /* CommitTableViewCell.swift in Sources */,
 				CEC15B1C24BA28EC003C8E7C /* CommonNavigationController.swift in Sources */,
+				CE27246024D5914C0025EEC5 /* FavoriteRepositoriesViewController.swift in Sources */,
 				CEC01F3F249F4C2E0060739A /* NetworkService.swift in Sources */,
 				CEC15B2524BB5E21003C8E7C /* RepositoryHeaderView.swift in Sources */,
 				CEBF982524C32F51008DA898 /* TabBarController.swift in Sources */,
@@ -331,14 +368,17 @@
 				CEBF981F24C30357008DA898 /* CustomDateFormatter.swift in Sources */,
 				CE4313B8249E4C6A00E9C9A2 /* LoginViewController.swift in Sources */,
 				CEC01F36249F479D0060739A /* RepositoryTableViewCell.swift in Sources */,
+				CE27246324D5B69F0025EEC5 /* StorageObjectsConverter.swift in Sources */,
 				CE2E847924BB698B00D2EA8E /* RepositoryViewModel.swift in Sources */,
 				CEC15B2124BB5883003C8E7C /* RepositoryViewController.swift in Sources */,
 				CEC15B1A24BA27DF003C8E7C /* UIStoryboard+Ext.swift in Sources */,
 				CEC01F39249F48BF0060739A /* Repository.swift in Sources */,
 				CEC01F3B249F49450060739A /* Owner.swift in Sources */,
+				CE27245E24D591220025EEC5 /* ViewModelDelegate.swift in Sources */,
 				CE4313B4249E4C6A00E9C9A2 /* AppDelegate.swift in Sources */,
 				CEC01F34249F47580060739A /* RepoListViewController.swift in Sources */,
 				CEC01F3D249F4C0E0060739A /* RepoListViewModel.swift in Sources */,
+				CEA93E9424C73B980000E03B /* RepoModel.xcdatamodeld in Sources */,
 				CEC15B1624BA04A4003C8E7C /* LoginService.swift in Sources */,
 				CEBF981924C2E404008DA898 /* Parser.swift in Sources */,
 			);
@@ -542,6 +582,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CEA93E9224C73B970000E03B /* RepoModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CEA93E9324C73B970000E03B /* RepoModel.xcdatamodel */,
+			);
+			currentVersion = CEA93E9324C73B970000E03B /* RepoModel.xcdatamodel */;
+			path = RepoModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CE4313A8249E4C6A00E9C9A2 /* Project object */;
 }

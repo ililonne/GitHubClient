@@ -86,12 +86,43 @@ class RepoListViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+
+        guard let repo = model.getRepoModel(for: indexPath.row)?.repository else {
+            assertionFailure()
+            return nil
+        }
+        
+        if let results = StorageService.instance.findExistingRepositories(for: repo),
+           results.count > 0 {
+            let deleteAction = UITableViewRowAction(style: .normal, title: "Удалить из избранного") { (action, indexPath) in
+                for result in results {
+                    do {
+                        try StorageService.instance.delete(object: result)
+                    }
+                    catch {
+                        //
+                    }
+                }
+            }
+            deleteAction.backgroundColor = .red
+            return [deleteAction]
+        }
+        else {
+            let favoriteAction = UITableViewRowAction(style: .normal, title: "Сохранить") { [weak self] (action, indexPath) in
+                self?.model.loadAndSaveFullRepository(repo)
+            }
+            favoriteAction.backgroundColor = .green
+            return [favoriteAction]
+        }
+    }
+    
     @objc private func refresh() {
         model.refresh()
     }
 }
 
-extension RepoListViewController: ViewModelDelegate {
+extension RepoListViewController: RepoListViewModelDelegate {
     func viewModelDidLoad() {
         DispatchQueue.main.async {
             if self.loadIndicator.isAnimating {
@@ -108,6 +139,10 @@ extension RepoListViewController: ViewModelDelegate {
     }
     
     func viewModelDidFailLoad() {
+        //
+    }
+    
+    func viewModelDidFailLoadFullRepo() {
         //
     }
 }

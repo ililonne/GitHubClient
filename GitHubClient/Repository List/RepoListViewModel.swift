@@ -8,9 +8,8 @@
 
 import Foundation
 
-protocol ViewModelDelegate: class {
-    func viewModelDidLoad()
-    func viewModelDidFailLoad()
+protocol RepoListViewModelDelegate: ViewModelDelegate {
+    func viewModelDidFailLoadFullRepo()
 }
 
 enum RepoListViewModelType {
@@ -19,7 +18,7 @@ enum RepoListViewModelType {
 }
 
 class RepoListViewModel {
-    weak var delegate: ViewModelDelegate?
+    weak var delegate: RepoListViewModelDelegate?
     
     private let type: RepoListViewModelType
     
@@ -120,5 +119,24 @@ class RepoListViewModel {
             return repositories[row]
         }
         return nil
+    }
+    
+    func loadAndSaveFullRepository(_ repository: Repository) {
+        let request = "repos/​\(repository.fullName)/commits".cleared
+        
+        DispatchQueue.global(qos: .utility).async {
+            NetworkService.request(request) { [weak self] (json, isError) in
+                if let jsonArray = json as? [[String: Any]] {
+                    let commits = Parser.parseCommits(from: jsonArray, maxCount: maxCommitCount)
+                    do {
+                        try StorageService.instance.saveRepositoryInfo((repository, commits))
+                    } catch {
+                        self?.delegate?.viewModelDidFailLoadFullRepo()
+                    }
+                } else {
+                    self?.delegate?.viewModelDidFailLoadFullRepo()
+                }
+            }
+        }
     }
 }

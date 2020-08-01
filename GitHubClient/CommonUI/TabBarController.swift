@@ -20,7 +20,11 @@ class TabBarController: UITabBarController {
         let gitHubVC = RepoListViewController(model: RepoListViewModel(type: .github), title: "GitHub")
         gitHubVC.tabBarItem.title = "GitHub"
         gitHubVC.tabBarItem.image = UIImage(named: "github")
+
+        let favoriteVC = FavoriteRepositoriesViewController()
+        favoriteVC.tabBarItem.title = "Избранное"
+        favoriteVC.tabBarItem.image = UIImage(named: "fav")
         
-        setViewControllers([publicVC, gitHubVC], animated: false)
+        setViewControllers([publicVC, gitHubVC, favoriteVC], animated: false)
     }
 }

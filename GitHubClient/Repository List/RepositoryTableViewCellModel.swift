@@ -3,7 +3,7 @@ import Foundation
 class RepositoryTableViewCellModel {
     private(set) var repository: Repository
     
-    private var isLoaded = false
+    private var isLoaded: Bool
     
     var repoTitle: String {
         return repository.name
@@ -29,6 +29,10 @@ class RepositoryTableViewCellModel {
     
     init(repo: Repository) {
         repository = repo
+        isLoaded = repo.stars != nil &&
+                   repo.forks != nil &&
+                   repo.stars != defaultIntConstantForSaving &&
+                   repo.forks != defaultIntConstantForSaving
     }
     
     func loadFull(completion: @escaping (_ isError: Bool) -> Void) {

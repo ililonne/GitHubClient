@@ -30,7 +30,7 @@ class RepositoryHeaderView: UITableViewHeaderFooterView {
         languageLabel.text = repo.language
         descriptionLabel.text = repo.description
         ownerNameLabel.text = repo.owner.name
-        createdDateLabel.text = formatter.stringDate(from: repo.date ?? "")
+        createdDateLabel.text = formatter.stringDate(from: repo.creationDate ?? "")
         titleLabel.text = repo.name
         
         if let avatarUrlString = repo.owner.avatarUrl, let avatarUrl = URL(string: avatarUrlString) {

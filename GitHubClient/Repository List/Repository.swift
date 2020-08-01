@@ -17,5 +17,5 @@ struct Repository {
     let stars: Int?
     let watchers: Int?
     var language: String?
-    let date: String?
+    let creationDate: String?
 }

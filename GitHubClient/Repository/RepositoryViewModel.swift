@@ -8,7 +8,7 @@
 
 import Foundation
 
-private let commitCount = 10
+let maxCommitCount = 10
 
 class RepositoryViewModel {
     
@@ -25,9 +25,25 @@ class RepositoryViewModel {
 
     init(repo: Repository) {
         repository = repo
+        isLoaded = repo.stars != nil &&
+                   repo.forks != nil &&
+                   repo.watchers != nil &&
+                   repo.stars != defaultIntConstantForSaving &&
+                   repo.forks != defaultIntConstantForSaving &&
+                   repo.watchers != defaultIntConstantForSaving
+    }
+
+    convenience init(repo: Repository, commits: [Commit]) {
+        self.init(repo: repo)
+        self.commits = commits
     }
     
     func update() {
+        guard commits.isEmpty else {
+            delegate?.viewModelDidLoad()
+            return
+        }
+        
         let request = "repos/​\(repository.fullName)/commits".cleared
         let langRequestString = "repos/​\(repository.fullName)/languages".cleared
         
@@ -39,12 +55,7 @@ class RepositoryViewModel {
                 }
                 NetworkService.request(request) { (json, isError) in
                     if let jsonArray = json as? [[String: Any]] {
-                        let commits = jsonArray.compactMap({ Parser.parseCommit(from: $0) })
-                        if commits.count > commitCount {
-                            self?.commits = Array(commits[0..<commitCount])
-                        } else {
-                            self?.commits = commits
-                        }
+                        self?.commits = Parser.parseCommits(from: jsonArray, maxCount: maxCommitCount)
                         self?.delegate?.viewModelDidLoad()
                     } else {
                         self?.delegate?.viewModelDidFailLoad()
