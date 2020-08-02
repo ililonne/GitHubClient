@@ -7,12 +7,10 @@
 //
 
 import UIKit
-import SnapKit
 
-class RepoListViewController: UITableViewController {
+class RepoListViewController: TableViewController {
 
     private let model: RepoListViewModel
-    private lazy var loadIndicator = UIActivityIndicatorView(style: .gray)
     
     private lazy var bottomLoader: UIActivityIndicatorView = {
         let loader = UIActivityIndicatorView(style: .gray)
@@ -38,11 +36,6 @@ class RepoListViewController: UITableViewController {
 
         tableView.rowHeight = UITableView.automaticDimension
         model.delegate = self
-        
-        loadIndicator.hidesWhenStopped = true
-        view.addSubview(loadIndicator)
-        loadIndicator.snp.makeConstraints({ $0.center.equalToSuperview() })
-        loadIndicator.startAnimating()
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -95,13 +88,13 @@ class RepoListViewController: UITableViewController {
         
         if let results = StorageService.instance.findExistingRepositories(for: repo),
            results.count > 0 {
-            let deleteAction = UITableViewRowAction(style: .normal, title: "Удалить из избранного") { (action, indexPath) in
+            let deleteAction = UITableViewRowAction(style: .normal, title: "Удалить из избранного") { [weak self] (action, indexPath) in
                 for result in results {
                     do {
                         try StorageService.instance.delete(object: result)
                     }
                     catch {
-                        //
+                        self?.showErrorAlert(message: "Не удалось удалить репозиторий")
                     }
                 }
             }
@@ -120,6 +113,11 @@ class RepoListViewController: UITableViewController {
     @objc private func refresh() {
         model.refresh()
     }
+    
+    override func update() {
+        super.update()
+        refresh()
+    }
 }
 
 extension RepoListViewController: RepoListViewModelDelegate {
@@ -127,6 +125,7 @@ extension RepoListViewController: RepoListViewModelDelegate {
         DispatchQueue.main.async {
             if self.loadIndicator.isAnimating {
                 self.loadIndicator.stopAnimating()
+                self.loadIndicator.isHidden = true
             }
             if self.tableView.refreshControl?.isRefreshing == true {
                 self.tableView.refreshControl?.endRefreshing()
@@ -139,10 +138,10 @@ extension RepoListViewController: RepoListViewModelDelegate {
     }
     
     func viewModelDidFailLoad() {
-        //
+        showError()
     }
     
     func viewModelDidFailLoadFullRepo() {
-        //
+        showErrorAlert(message: "Не удалось сохранить репозиторий")
     }
 }

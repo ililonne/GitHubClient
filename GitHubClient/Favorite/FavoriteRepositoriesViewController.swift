@@ -9,8 +9,18 @@
 import UIKit
 import CoreData
 
-class FavoriteRepositoriesViewController: UITableViewController {
+class FavoriteRepositoriesViewController: TableViewController {
     
+    private lazy var emptyViewLabel: UILabel = {
+        let l = UILabel()
+        l.translatesAutoresizingMaskIntoConstraints = false
+        l.font = UIFont(name: "Helvetica", size: 18)
+        l.textAlignment = .center
+        l.text = "Нет избранных репозиториев"
+        l.isHidden = true
+        return l
+    }()
+
     private lazy var fetchedResultsController: NSFetchedResultsController<RepositoryObject> = {
         let fetchRequest: NSFetchRequest<RepositoryObject> = RepositoryObject.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "addingDate", ascending: true)]
@@ -25,14 +35,18 @@ class FavoriteRepositoriesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchedResultsController.delegate = self
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            //
-        }
+        update()
         
         tableView.register(UINib.init(nibName: "RepositoryTableViewCell", bundle: .main), forCellReuseIdentifier: "RepositoryTableViewCell")
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.tableFooterView = UIView()
+        
+        view.addSubview(emptyViewLabel)
+        NSLayoutConstraint.activate([
+            emptyViewLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            emptyViewLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        updateEmptyView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,13 +97,29 @@ class FavoriteRepositoriesViewController: UITableViewController {
                 try StorageService.instance.delete(object: managedObject)
             }
             catch {
-                //
+                showErrorAlert(message: "Не удалось удалить репозиторий")
             }
         }
     }
     
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Удалить"
+    }
+    
+    override func update() {
+        super.update()
+        do {
+            try fetchedResultsController.performFetch()
+            loadIndicator.stopAnimating()
+            loadIndicator.isHidden = true
+        } catch {
+            showError()
+        }
+    }
+    
+    private func updateEmptyView() {
+        let fetchedObjectsCount = fetchedResultsController.fetchedObjects?.count ?? 0
+        emptyViewLabel.isHidden = fetchedObjectsCount > 0
     }
 }
 
@@ -111,6 +141,7 @@ extension FavoriteRepositoriesViewController: NSFetchedResultsControllerDelegate
         default:
             break
         }
+        updateEmptyView()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

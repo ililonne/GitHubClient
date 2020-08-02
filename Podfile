@@ -8,8 +8,6 @@ target 'GitHubClient' do
   # Pods for GitHubClient
     pod 'Alamofire'
     pod 'Kingfisher'
-    pod 'SkeletonView'
     pod 'SwiftKeychainWrapper'
-    pod 'SnapKit'
 
 end

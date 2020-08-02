@@ -8,7 +8,6 @@
 
 import UIKit
 import Kingfisher
-import SkeletonView
 
 class RepositoryTableViewCell: UITableViewCell {
 

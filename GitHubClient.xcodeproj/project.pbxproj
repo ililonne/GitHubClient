@@ -11,6 +11,7 @@
 		CE27245E24D591220025EEC5 /* ViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27245D24D591220025EEC5 /* ViewModelDelegate.swift */; };
 		CE27246024D5914C0025EEC5 /* FavoriteRepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27245F24D5914C0025EEC5 /* FavoriteRepositoriesViewController.swift */; };
 		CE27246324D5B69F0025EEC5 /* StorageObjectsConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27246224D5B69F0025EEC5 /* StorageObjectsConverter.swift */; };
+		CE27246524D692500025EEC5 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27246424D692500025EEC5 /* TableViewController.swift */; };
 		CE2E847924BB698B00D2EA8E /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E847824BB698B00D2EA8E /* RepositoryViewModel.swift */; };
 		CE2E847B24BB6BBA00D2EA8E /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E847A24BB6BBA00D2EA8E /* Commit.swift */; };
 		CE4313B4249E4C6A00E9C9A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4313B3249E4C6A00E9C9A2 /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 		CE27245D24D591220025EEC5 /* ViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelDelegate.swift; sourceTree = "<group>"; };
 		CE27245F24D5914C0025EEC5 /* FavoriteRepositoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoriesViewController.swift; sourceTree = "<group>"; };
 		CE27246224D5B69F0025EEC5 /* StorageObjectsConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageObjectsConverter.swift; sourceTree = "<group>"; };
+		CE27246424D692500025EEC5 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		CE2E847824BB698B00D2EA8E /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
 		CE2E847A24BB6BBA00D2EA8E /* Commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
 		CE4313B0249E4C6A00E9C9A2 /* GitHubClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,7 @@
 			children = (
 				CE27245D24D591220025EEC5 /* ViewModelDelegate.swift */,
 				CEC15B1B24BA28EC003C8E7C /* CommonNavigationController.swift */,
+				CE27246424D692500025EEC5 /* TableViewController.swift */,
 				CEBF982424C32F51008DA898 /* TabBarController.swift */,
 			);
 			path = CommonUI;
@@ -369,6 +372,7 @@
 				CE4313B8249E4C6A00E9C9A2 /* LoginViewController.swift in Sources */,
 				CEC01F36249F479D0060739A /* RepositoryTableViewCell.swift in Sources */,
 				CE27246324D5B69F0025EEC5 /* StorageObjectsConverter.swift in Sources */,
+				CE27246524D692500025EEC5 /* TableViewController.swift in Sources */,
 				CE2E847924BB698B00D2EA8E /* RepositoryViewModel.swift in Sources */,
 				CEC15B2124BB5883003C8E7C /* RepositoryViewController.swift in Sources */,
 				CEC15B1A24BA27DF003C8E7C /* UIStoryboard+Ext.swift in Sources */,

@@ -8,9 +8,16 @@
 
 import UIKit
 
-class RepositoryViewController: UITableViewController {
+class RepositoryViewController: TableViewController {
 
     private let model: RepositoryViewModel
+
+    private lazy var headerView: RepositoryHeaderView? = {
+        let nib = UINib.init(nibName: "RepositoryHeaderView", bundle: .main)
+        let view = nib.instantiate(withOwner: nil, options: nil).first as? RepositoryHeaderView
+        view?.isHidden = true
+        return view
+    }()
     
     required init(model: RepositoryViewModel) {
         self.model = model
@@ -27,12 +34,10 @@ class RepositoryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let nib = UINib.init(nibName: "RepositoryHeaderView", bundle: .main)
-        let headerView = nib.instantiate(withOwner: nil, options: nil).first as? RepositoryHeaderView
         tableView.tableHeaderView = headerView
+        tableView.tableFooterView = UIView()
         
         tableView.register(UINib.init(nibName: "CommitTableViewCell", bundle: .main), forCellReuseIdentifier: "CommitTableViewCell")
-        headerView?.update(with: model.repository)
         
         model.update()
     }
@@ -48,6 +53,7 @@ class RepositoryViewController: UITableViewController {
         }
         tableView.layoutIfNeeded()
     }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.numberOfItems
     }
@@ -59,16 +65,32 @@ class RepositoryViewController: UITableViewController {
         }
         return cell ?? UITableViewCell()
     }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+
+    override func update() {
+        super.update()
+        model.update()
+    }
 }
 
 extension RepositoryViewController: ViewModelDelegate {
     func viewModelDidLoad() {
         DispatchQueue.main.async {
+            if self.loadIndicator.isAnimating {
+                self.loadIndicator.stopAnimating()
+                self.loadIndicator.isHidden = true
+            }
+            self.headerView?.isHidden = false
+            self.headerView?.update(with: self.model.repository)
             self.tableView.reloadData()
+            self.viewDidLayoutSubviews()
         }
     }
     
     func viewModelDidFailLoad() {
-        //
+        showError()
     }
 }
