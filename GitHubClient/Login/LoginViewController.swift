@@ -16,7 +16,10 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: Any) {
-        LoginService.requestAuthorization()
+        if let url = LoginService.getRequestAuthorizationURL() {
+            let vc = LoginWebViewController(url: url)
+            present(vc, animated: true, completion: nil)
+        }
     }
     
     @objc private func showMainScreen() {

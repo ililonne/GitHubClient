@@ -15,21 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        if StorageService.getKeychainParameter(key: .token) != nil {
+        if StorageService.userIsLogged {
             window?.rootViewController = UIStoryboard.main.commonNavigationViewController
         } else {
+            StorageService.clearParameteres()
             window?.rootViewController = UIStoryboard.main.loginViewController
         }
      
         window?.makeKeyAndVisible()
         
-        return true
-    }
-
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-      
-        LoginService.requestAuthToken(url: url)
-      
         return true
     }
 }

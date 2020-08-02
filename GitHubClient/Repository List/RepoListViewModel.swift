@@ -74,6 +74,7 @@ class RepoListViewModel {
                 guard let this = self else {
                     return
                 }
+                this.isUpdating = false
                 if isError {
                     this.delegate?.viewModelDidFailLoad()
                 } else {
@@ -93,10 +94,8 @@ class RepoListViewModel {
                             this.repositories = models
                         }
                         this.page += 1
-                        this.isUpdating = false
                         this.delegate?.viewModelDidLoad()
                     } else {
-                        this.isUpdating = false
                         this.delegate?.viewModelDidFailLoad()
                     }
                 }

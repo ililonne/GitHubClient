@@ -16,6 +16,16 @@ class StorageService {
         case token = "token"
     }
     
+    private static let loggedKey = "isLogged"
+    static var userIsLogged: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: loggedKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: loggedKey)
+        }
+    }
+    
     @discardableResult
     class func setKeychainParameter(_ parameter: String, key: StorageKey) -> Bool {
         return KeychainWrapper.standard.set(parameter, forKey:  key.rawValue)
@@ -24,8 +34,10 @@ class StorageService {
     class func getKeychainParameter(key: StorageKey) -> String? {
         return KeychainWrapper.standard.string(forKey: key.rawValue)
     }
-
+    
+    @discardableResult
     class func clearParameteres() -> Bool {
+        userIsLogged = false
         return KeychainWrapper.standard.removeObject(forKey: StorageKey.token.rawValue)
     }
     
