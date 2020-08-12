@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
     @objc private func showMainScreen() {
         NotificationCenter.default.removeObserver(self)
         
-        UIApplication.shared.delegate?.window??.rootViewController = UIStoryboard.main.commonNavigationViewController
+        UIApplication.shared.delegate?.window??.rootViewController = UIStoryboard.main.tabBarController
     }
 }
 

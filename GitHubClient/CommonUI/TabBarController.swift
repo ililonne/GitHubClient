@@ -13,15 +13,15 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let publicVC = RepoListViewController(model: RepoListViewModel(type: .public), title: "Публичные репозитории")
+        let publicVC = CommonNavigationController(rootViewController: RepoListViewController(model: RepoListViewModel(type: .public), title: "Публичные репозитории"))
         publicVC.tabBarItem.title = "Публичные"
         publicVC.tabBarItem.image = UIImage(named: "repos")
         
-        let gitHubVC = RepoListViewController(model: RepoListViewModel(type: .github), title: "GitHub")
+        let gitHubVC = CommonNavigationController(rootViewController: RepoListViewController(model: RepoListViewModel(type: .github), title: "GitHub"))
         gitHubVC.tabBarItem.title = "GitHub"
         gitHubVC.tabBarItem.image = UIImage(named: "github")
 
-        let favoriteVC = FavoriteRepositoriesViewController()
+        let favoriteVC = CommonNavigationController(rootViewController: FavoriteRepositoriesViewController())
         favoriteVC.tabBarItem.title = "Избранное"
         favoriteVC.tabBarItem.image = UIImage(named: "fav")
         

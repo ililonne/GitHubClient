@@ -47,11 +47,8 @@ class FavoriteRepositoriesViewController: TableViewController {
             emptyViewLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         updateEmptyView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.topItem?.title = "Избранное"
+        
+        title = "Избранное"
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -10,13 +10,24 @@ import UIKit
 
 class CommonNavigationController: UINavigationController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private lazy var logoutButton: UIButton = {
+        let b = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        b.setImage(UIImage(named: "logout"), for: .normal)
+        b.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        return b
+    }()
 
-        let logoutButton = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        logoutButton.setImage(UIImage(named: "logout"), for: .normal)
-        logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
-        navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(customView: logoutButton)
+    override init(rootViewController: UIViewController) {
+        super.init(rootViewController: rootViewController)
+        rootViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: logoutButton)
+    }
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     @objc private func logout() {

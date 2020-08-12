@@ -13,8 +13,8 @@ extension UIStoryboard {
         return UIStoryboard(name: "Main", bundle: nil)
     }
     
-    var commonNavigationViewController: UIViewController {
-        return instantiateViewController(withIdentifier: "CommonNavigationController")
+    var tabBarController: UIViewController {
+        return instantiateViewController(withIdentifier: "TabBarController")
     }
     
     var loginViewController: UIViewController {

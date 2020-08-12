@@ -77,31 +77,10 @@
             </objects>
             <point key="canvasLocation" x="-57" y="-299"/>
         </scene>
-        <!--Common Navigation Controller-->
-        <scene sceneID="xYh-xB-tsR">
-            <objects>
-                <navigationController storyboardIdentifier="CommonNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EXX-KQ-mUK" customClass="CommonNavigationController" customModule="GitHubClient" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Qvb-rC-iVE">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="f1B-xj-94E" kind="relationship" relationship="rootViewController" id="0W9-U3-aH4"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="doa-2p-dpi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-549" y="391"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="US2-gP-rg7">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" id="f1B-xj-94E" customClass="TabBarController" customModule="GitHubClient" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="b2a-Ai-O8Y">
-                        <barButtonItem key="backBarButtonItem" title=" " id="7Pf-52-gBf"/>
-                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="eOf-mH-75N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -112,7 +91,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pmb-f2-41Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="284" y="390"/>
+            <point key="canvasLocation" x="-287" y="409"/>
         </scene>
     </scenes>
     <resources>
